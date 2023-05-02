@@ -66,4 +66,4 @@ with col3.container():
 ##n = len(pd.unique(df5['des']))
 ##st.markdown("Нийт машины тоо :", n)
 
-st.write(df4)
+st.write(df5)
