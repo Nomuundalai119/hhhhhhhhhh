@@ -45,27 +45,35 @@ df5["motor_size"] = pd.to_numeric(df5["motor_size"])
 
 
 def btn_click():
+    st.markdown("<h4 style='text-align: center; color: black;'>Ерөнхий мэдээлэл</h1>", unsafe_allow_html=True)
+    
+    col8, col9 = st.columns(2)
     uni = df5['des']. nunique()
-    st.markdown("<h4 style='text-align: center; color: black;'>Нийт зар тавигдсан машины тоо</h1>", unsafe_allow_html=True)
-    st.info(uni)
+    
+    with col8.container():
+        col8.info(':car: Нийт зар тавигдсан машины тоо')
+    
+    with col9.container():
+        col9.info(uni)
     
     col1, col2, col3 = st.columns(3)
-    average_price = df5["price"].mean()
-    min_price = df5["price"].min()
-    max_price = df5["price"].max()
+    numbers_avg = "{:,}".format(df5["price"].mean())
+    numbers_min = "{:,}".format(df5["price"].min())
+    numbers_max = "{:,}".format(df5["price"].max())
     
     with col1.container():
-       col1.info(':red_car: Дундаж үнэ')
-       col1.info(round(average_price))
+       col1.info(':moneybag: Дундаж үнэ')
+       col1.info(numbers_avg)
        
     with col2.container():
-       col2.info(':red_car: Min үнэ')
-       col2.info(round(min_price))
+       col2.info(':small_red_triangle_down: Min үнэ')
+       col2.info(numbers_min)
     
     with col3.container():
-        col3.info(':red_car: Max үнэ')
-        col3.info(round(max_price))
+        col3.info(':small_red_triangle: Max үнэ')
+        col3.info(numbers_max)
     
     st.write(df5)
 
-button = st.button("шалгах",on_click=btn_click)
+button = st.button(":globe_with_meridians: Шалгах",on_click=btn_click)
+
